@@ -1,0 +1,24 @@
+{
+  "name": "Igris • Missão Diária Garmin",
+  "short_name": "Igris Workout",
+  "description": "App oficial de treino diário do Caçador com Chibi Igris e sincronização direta com Garmin Connect & Forerunner 965.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060A12",
+  "theme_color": "#00E5FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

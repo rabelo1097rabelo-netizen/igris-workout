@@ -1,0 +1,366 @@
+:root {
+  --bg-deep: #060A12;
+  --bg-card: rgba(10, 20, 36, 0.88);
+  --cyan-neon: #00E5FF;
+  --cyan-glow: rgba(0, 229, 255, 0.35);
+  --purple-monarch: #A855F7;
+  --purple-glow: rgba(168, 85, 247, 0.45);
+  --red-crimson: #FF2A54;
+  --red-glow: rgba(255, 42, 84, 0.45);
+  --text-primary: #F8FAFC;
+  --text-dim: #94A3B8;
+  --font-system: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(0, 229, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 50% 85%, rgba(168, 85, 247, 0.06) 0%, transparent 60%);
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TOP SYSTEM BAR (SOLO LEVELING HUD)
+   ============================================================ */
+.system-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: rgba(6, 10, 18, 0.95);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.25);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.system-title-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.system-icon {
+  width: 22px;
+  height: 22px;
+  background: var(--cyan-neon);
+  color: #000;
+  font-weight: 900;
+  font-size: 13px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.system-label {
+  font-size: 0.78rem;
+  letter-spacing: 1.2px;
+  font-weight: 800;
+  color: var(--cyan-neon);
+  text-transform: uppercase;
+}
+
+.hunter-rank-badge {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(0, 229, 255, 0.25));
+  border: 1px solid var(--purple-monarch);
+  color: #F8FAFC;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   MAIN CONTAINER
+   ============================================================ */
+.app-container {
+  flex: 1;
+  padding: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================================================
+   IGRIS LIVE PET HERO BANNER
+   ============================================================ */
+.igris-hero-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(15, 28, 48, 0.8) 0%, rgba(8, 14, 24, 0.95) 100%);
+  border: 1.5px solid var(--cyan-neon);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px var(--cyan-glow);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.igris-canvas-wrapper {
+  width: 150px;
+  height: 190px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#igris-canvas {
+  width: 140px;
+  height: 180px;
+}
+
+.igris-speech-bubble {
+  margin-top: 10px;
+  background: rgba(6, 12, 22, 0.9);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  color: #E2E8F0;
+  text-align: center;
+  max-width: 90%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+/* ============================================================
+   SOLO LEVELING DAILY QUEST SYSTEM CARD
+   ============================================================ */
+.quest-window {
+  background: var(--bg-card);
+  border: 2px solid var(--cyan-neon);
+  border-radius: 16px;
+  box-shadow: 0 0 25px var(--cyan-glow), inset 0 0 15px rgba(0, 229, 255, 0.1);
+  padding: 20px;
+  position: relative;
+}
+
+.quest-window.penalty-mode {
+  border-color: var(--red-crimson);
+  box-shadow: 0 0 30px var(--red-glow), inset 0 0 20px rgba(255, 42, 84, 0.15);
+  animation: pulse-penalty 2s infinite ease-in-out;
+}
+
+@keyframes pulse-penalty {
+  0%, 100% { border-color: var(--red-crimson); box-shadow: 0 0 25px var(--red-glow); }
+  50% { border-color: #FFA5B4; box-shadow: 0 0 40px rgba(255, 42, 84, 0.7); }
+}
+
+.quest-header {
+  border-bottom: 1px solid rgba(0, 229, 255, 0.25);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.quest-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cyan-neon);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.quest-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.quest-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.meta-chip {
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-chip-label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.meta-chip-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.quest-strategy-box {
+  background: rgba(15, 23, 42, 0.7);
+  border-left: 3px solid var(--cyan-neon);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  line-height: 1.45;
+  margin-bottom: 18px;
+}
+
+/* ============================================================
+   ACTION BUTTONS
+   ============================================================ */
+.action-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-solo {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  font-family: var(--font-system);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  outline: none;
+  border: none;
+}
+
+.btn-garmin-send {
+  background: linear-gradient(135deg, #0284C7 0%, #00B4D8 100%);
+  color: #FFFFFF;
+  border: 1.5px solid #38BDF8;
+  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.4);
+}
+
+.btn-garmin-send:active {
+  transform: scale(0.98);
+}
+
+.btn-arise-complete {
+  background: linear-gradient(135deg, #7E22CE 0%, #A855F7 100%);
+  color: #FFFFFF;
+  border: 1.5px solid #C084FC;
+  box-shadow: 0 4px 20px var(--purple-glow);
+}
+
+.btn-arise-complete:active {
+  transform: scale(0.98);
+}
+
+.btn-arise-complete.completed {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1.5px solid #22C55E;
+  color: #4ADE80;
+  box-shadow: none;
+}
+
+/* ============================================================
+   HUNTER STATUS MODAL & ATTRIBUTES
+   ============================================================ */
+.status-card {
+  background: rgba(10, 20, 36, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.status-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  text-align: center;
+}
+
+.attr-item {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px 4px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.attr-name {
+  font-size: 0.65rem;
+  color: var(--cyan-neon);
+  font-weight: 700;
+}
+
+.attr-val {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFF;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   TOAST NOTIFICATION
+   ============================================================ */
+.toast-msg {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(6, 12, 22, 0.95);
+  border: 1.5px solid var(--cyan-neon);
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.4);
+  color: #FFF;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  pointer-events: none;
+  max-width: 90%;
+  text-align: center;
+}
+
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}

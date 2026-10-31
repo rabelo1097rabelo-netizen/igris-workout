@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Igris • Missão Diária Garmin</title>
+  
+  <!-- Web App PWA Manifest & Meta -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00E5FF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/png" href="/icons/favicon.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css?v=1">
+</head>
+<body>
+
+  <!-- Top System Bar -->
+  <header class="system-topbar">
+    <div class="system-title-tag">
+      <div class="system-icon">!</div>
+      <div class="system-label">SISTEMA • DAILY QUEST</div>
+    </div>
+    <div id="hunter-rank-display" class="hunter-rank-badge">RANK B • LV 24</div>
+  </header>
+
+  <main class="app-container">
+
+    <!-- Igris Animated Hero Pet -->
+    <section class="igris-hero-card">
+      <div class="igris-canvas-wrapper" onclick="app.triggerTouchReaction()" title="Toque para Igris brandir a espada!">
+        <canvas id="igris-canvas" width="165" height="210"></canvas>
+      </div>
+      <div id="igris-speech" class="igris-speech-bubble">
+        "Meu Senhor, aguardo suas ordens para o treino do dia."
+      </div>
+    </section>
+
+    <!-- Solo Leveling Quest Window -->
+    <section id="quest-card" class="quest-window">
+      <div class="quest-header">
+        <div class="quest-eyebrow">MISSÃO DO DIA • GARMIN CONNECT</div>
+        <h2 id="quest-workout-title" class="quest-title">Corrida de Base Z2</h2>
+      </div>
+
+      <!-- Metrics Grid -->
+      <div class="quest-meta-grid">
+        <div class="meta-chip">
+          <span class="meta-chip-label">Duração</span>
+          <span id="quest-duration" class="meta-chip-val">35 min</span>
+        </div>
+        <div class="meta-chip">
+          <span class="meta-chip-label">Distância Est.</span>
+          <span id="quest-distance" class="meta-chip-val">4.8 km</span>
+        </div>
+        <div class="meta-chip">
+          <span class="meta-chip-label">Ritmo Alvo (Pace)</span>
+          <span id="quest-pace" class="meta-chip-val">5:30/km</span>
+        </div>
+        <div class="meta-chip">
+          <span class="meta-chip-label">FC Alvo</span>
+          <span id="quest-hr" class="meta-chip-val">155 bpm</span>
+        </div>
+      </div>
+
+      <!-- AI Strategy Box -->
+      <div id="quest-strategy" class="quest-strategy-box">
+        Mantenha a respiração estável em 3:3 passadas. Foco estrito em Z2 sem deixar a frequência cardíaca disparar na subida.
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-cluster">
+        <button id="btn-send-garmin" class="btn-solo btn-garmin-send" onclick="app.sendToGarmin()">
+          <span>📲 Enviar para Garmin Connect & Relógio</span>
+        </button>
+
+        <button id="btn-arise-complete" class="btn-solo btn-arise-complete" onclick="app.completeWorkout()">
+          <span>⚔️ Concluir Treino (ARISE!)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Hunter Attributes Card -->
+    <section class="status-card">
+      <div class="status-card-header">
+        <span>STATUS DO ATLETA</span>
+        <span id="hunter-exp-text">EXP 78%</span>
+      </div>
+      <div class="attributes-grid">
+        <div class="attr-item">
+          <div class="attr-name">STR</div>
+          <div id="attr-str" class="attr-val">42</div>
+        </div>
+        <div class="attr-item">
+          <div class="attr-name">AGI</div>
+          <div id="attr-agi" class="attr-val">58</div>
+        </div>
+        <div class="attr-item">
+          <div class="attr-name">VIT</div>
+          <div id="attr-vit" class="attr-val">64</div>
+        </div>
+        <div class="attr-item">
+          <div class="attr-name">PER</div>
+          <div id="attr-per" class="attr-val">37</div>
+        </div>
+        <div class="attr-item">
+          <div class="attr-name">INT</div>
+          <div id="attr-int" class="attr-val">29</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast" class="toast-msg">Mensagem do Sistema</div>
+
+  <script src="/js/app.js?v=1"></script>
+</body>
+</html>
